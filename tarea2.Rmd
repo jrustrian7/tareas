@@ -1,0 +1,125 @@
+---
+title: "Tarea 2 - Julio Cesar Rustrian Monterroso"
+output: html_notebook
+---
+
+#FUNCIONES EN R
+
+#Estructura de una funcion
+
+  #una funcion es un trozo de codigo que se utilizara mas adelante segun se necesite, en esta se debe definir 3     elementos importantes para que pueda funcionar:
+  
+   #-argumentos
+   #-cuerpo de la función
+   #-resultado que devolvera la funcion
+  
+  #la estructura general de la funcion debe ser similar a la siguiente:
+  
+    #funcionejemplo <- function(argumento1, argumento2, etc..){ 
+      #cuerpo
+      #resultado
+    #}
+  
+  #una funcion puede ser tan simple como desde la operacion de una suma, hasta llegar a un grado de complejidad     mayor, como por ejemplo una funcion de potencia e inclusive incluyendo restricciones o condicionales if        dentro de la funcion
+  
+#ejemplo de una funcion
+
+```{r}
+#funcion suma
+suma2 <- function(num1,num2){
+  #suma dos numeros, el num1 + el num2
+  num1 + num2
+}
+
+x <- 10
+y <- 5
+
+suma2(x,y)
+```
+```{r}
+#funcion potencia
+
+potencia <- function(numbase,numpotencia){
+  #funcion que eleva el numbase a la potencia indicada en el numpotencia
+  numbase^numpotencia
+}
+
+potencia(2,3)
+```
+
+#Argumentos de una funcion
+
+  #los argumentos dentro de una funcion son una serie de valores/variables que se deben pasar a la funcion        creada, la       cantidad de argumentos que se trasladan varia segun la cantidad de argumentos que se le       indico solicitar a     la funcion. Los argumentos no precisamente deben enviarse en el orden que solicita la    funcion, sin embargo     hay que indicarle a que argumento esperado se le asigna dicho valor. Existe           diversos metodos de enviar los     argumentos como por ejemplo:
+  
+    #coincidencia exacta del nombre del argumento
+    #coincidencia parcial del nombre del argumento
+    #por posicion
+    
+  #Los argumentos pueden ser datos, estructuras de datos, entre otros. y todos deben tener nombres diferentes
+  
+```{r}
+mifuncion1 <- function(argumento1,argumento2,argumento3=){}
+
+mifuncion2 <- function(argumento1 = NULL, argumento2 = 3){}
+
+mifuncion3 <- function(...){}
+```
+
+
+#FAMILIA APPLY
+
+  #El comando apply, es una herramienta que nos permite agregar una funcion a todos los elementos de un           conjunto de valores o matriz. Apply requiere de tres argumentos:
+      #X: que es la matri, objeto o conjunto de valores
+      #Margin: El margen que agrupara los elementos de la matriz.
+      #FUN: La funcion que se aplicara a la matriz X en su dimension margin
+      
+  #La familia apply esta conformada por: apply(), eapply(), lapply(), mapply(), rapply(), sapply(), tapply() y    vapply()
+
+#lapply
+  #es un caso especial de apply(), aplica funciones a todos los elementos de una lista y devuelve una lista       como resultado, por lo general esta funcion admite dos argumentos: una lista de elementos y la funcion a       aplicar
+  
+  #lapply(lista,funcion)
+  
+#uso de lapply con funciones (ejemplos)
+
+```{r}
+trees[1:7,] #llamando a la lista trees
+
+lapply(trees, mean) #llamando a lapply para aplicar la funcion mean a la lista trees
+```
+```{r}
+milista <- matrix(1:25,ncol = 5)
+
+lapply(milista, quantile)
+```
+
+#sapply
+  #sapply es similar al uso de lapply, pero en este caso sapply muestra la salida de datos como un vector, una matriz o un array, y permite aplicar una funcion tanto a una lista como a un vector de datos, esta funcion admite dos argumentos: un vector o lista y la funcion a aplicar
+  
+  #sapply(lista,funcion)
+  
+#uso de sapply con funciones (ejemplos)
+
+```{r}
+trees[1:7,]
+
+sapply(trees,mean)
+```
+```{r}
+milista <- matrix(1:25,ncol = 5)
+
+sapply(milista, quantile)
+```
+
+
+#vapply
+  #vapply es similar a los comandos lapply y sapply, especificamente mas parecido a sapply, sin embargo en       este caso, a vapply hay que indicarle especificamente el tipo de dato que deseamos retorne
+  
+#uso de vapply con funciones (ejemplos)
+
+```{r}
+trees[1:7,]
+
+vapply(trees, mean, FUN.VALUE = numeric(1))
+```
+
