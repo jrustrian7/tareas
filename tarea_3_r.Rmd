@@ -57,7 +57,7 @@ dataset_results %>%
 dataset_results %>%
   filter(state == "Texas" & county == "Denton") %>% #filtrando
   dplyr::select(party, candidate, votes) %>%#se invoco de esta forma la función select para evitar ambiguedad con otras librerias
-  arrange(votes) #ordenando de forma ascendente los datos 
+  arrange(desc(votes)) #ordenando de forma descendente los datos 
 ```
 
 #Paso 4 - mutate() y arrange()
